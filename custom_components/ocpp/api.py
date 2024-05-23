@@ -170,12 +170,8 @@ class CentralSystem:
         self.websocket_ping_tries = entry.data.get(
             CONF_WEBSOCKET_PING_TRIES, DEFAULT_WEBSOCKET_PING_TRIES
         )
-        self.websocket_ping_interval = entry.data.get(
-            CONF_WEBSOCKET_PING_INTERVAL, DEFAULT_WEBSOCKET_PING_INTERVAL
-        )
-        self.websocket_ping_timeout = entry.data.get(
-            CONF_WEBSOCKET_PING_TIMEOUT, DEFAULT_WEBSOCKET_PING_TIMEOUT
-        )
+        self.websocket_ping_interval = DEFAULT_WEBSOCKET_PING_INTERVAL
+        self.websocket_ping_timeout = DEFAULT_WEBSOCKET_PING_TIMEOUT
 
         self.subprotocol = entry.data.get(CONF_SUBPROTOCOL, DEFAULT_SUBPROTOCOL)
         self._server = None
@@ -347,7 +343,7 @@ class ChargePoint(cp):
         entry: ConfigEntry,
         central: CentralSystem,
         interval_meter_metrics: int = 10,
-        skip_schema_validation: bool = False,
+        skip_schema_validation: bool = True,
     ):
         """Instantiate a ChargePoint."""
 
@@ -478,13 +474,7 @@ class ChargePoint(cp):
 
             accepted_measurands = ",".join(accepted_measurands)
 
-            if len(accepted_measurands) > 0:
-                _LOGGER.debug(f"'{self.id}' allowed measurands '{accepted_measurands}'")
-                await self.configure(
-                    ckey.meter_values_sampled_data.value,
-                    accepted_measurands,
-                )
-            else:
+            if len(accepted_measurands) == 0:
                 _LOGGER.debug(f"'{self.id}' measurands not configurable by OCPP")
                 resp = await self.get_configuration(
                     ckey.meter_values_sampled_data.value
@@ -554,9 +544,6 @@ class ChargePoint(cp):
             self.post_connect_success = True
             _LOGGER.debug(f"'{self.id}' post connection setup completed successfully")
 
-            # nice to have, but not needed for integration to function
-            # and can cause issues with some chargers
-            await self.configure(ckey.web_socket_ping_interval.value, "60")
             await self.set_availability()
             if prof.REM in self._attr_supported_features:
                 if self.received_boot_notification is False:
