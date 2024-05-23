@@ -1,5 +1,5 @@
 {
-    "name": "lbbrhzn/ocpp",
+    "name": "stefanthoss/ocpp-grizzl-e",
     "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
     "onCreateCommand": "scripts/setup",
     "forwardPorts": [
