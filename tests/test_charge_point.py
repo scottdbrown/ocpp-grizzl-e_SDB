@@ -11,16 +11,6 @@ from homeassistant.components.switch import (
     SERVICE_TURN_ON,
 )
 from homeassistant.const import ATTR_ENTITY_ID
-import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-import websockets
-
-from custom_components.ocpp import async_setup_entry, async_unload_entry
-from custom_components.ocpp.button import BUTTONS
-from custom_components.ocpp.const import DOMAIN as OCPP_DOMAIN
-from custom_components.ocpp.enums import ConfigurationKey, HAChargerServices as csvcs
-from custom_components.ocpp.number import NUMBERS
-from custom_components.ocpp.switch import SWITCHES
 from ocpp.routing import on
 from ocpp.v16 import ChargePoint as cpclass, call, call_result
 from ocpp.v16.enums import (
@@ -41,6 +31,16 @@ from ocpp.v16.enums import (
     TriggerMessageStatus,
     UnlockStatus,
 )
+import pytest
+from pytest_homeassistant_custom_component.common import MockConfigEntry
+import websockets
+
+from custom_components.ocpp import async_setup_entry, async_unload_entry
+from custom_components.ocpp.button import BUTTONS
+from custom_components.ocpp.const import DOMAIN as OCPP_DOMAIN
+from custom_components.ocpp.enums import ConfigurationKey, HAChargerServices as csvcs
+from custom_components.ocpp.number import NUMBERS
+from custom_components.ocpp.switch import SWITCHES
 
 from .const import MOCK_CONFIG_DATA, MOCK_CONFIG_DATA_2
 

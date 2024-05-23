@@ -6,9 +6,8 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import Config, HomeAssistant
 from homeassistant.helpers import device_registry
 import homeassistant.helpers.config_validation as cv
-import voluptuous as vol
-
 from ocpp.v16.enums import AuthorizationStatus
+import voluptuous as vol
 
 from .api import CentralSystem
 from .const import (

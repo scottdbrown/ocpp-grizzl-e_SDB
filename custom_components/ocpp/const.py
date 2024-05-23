@@ -4,7 +4,6 @@ import pathlib
 import homeassistant.components.input_number as input_number
 from homeassistant.components.sensor import SensorDeviceClass
 import homeassistant.const as ha
-
 from ocpp.v16.enums import Measurand, UnitOfMeasure
 
 CONF_AUTH_LIST = "authorization_list"
