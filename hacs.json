@@ -1,5 +1,5 @@
 {
-  "name": "Open Charge Point Protocol (OCPP)",
+  "name": "OCPP for Grizzl-E",
   "content_in_root": false,
   "homeassistant": "2022.7.0",
   "render_readme": true,
