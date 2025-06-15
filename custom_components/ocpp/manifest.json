@@ -1,6 +1,6 @@
 {
 	"domain": "ocpp",
-	"name": "OCPP for Grizzl-E",
+	"name": "OCPP for Grizzl-E SDB",
 	"after_dependencies": [
 		"persistent_notification"
 	],
@@ -9,9 +9,9 @@
 		"@drc38"
 	],
 	"config_flow": true,
-	"documentation": "https://github.com/stefanthoss/ocpp-grizzl-e/blob/main/README.md",
+	"documentation": "https://github.com/scottdbrown/ocpp-grizzl-e/blob/main/README.md",
 	"iot_class": "local_push",
-	"issue_tracker": "https://github.com/stefanthoss/ocpp-grizzl-e/issues",
+	"issue_tracker": "https://github.com/scottdbrown/ocpp-grizzl-e/issues",
 	"requirements": [
 		"ocpp>=1.0.0",
 		"websockets>=12.0"
