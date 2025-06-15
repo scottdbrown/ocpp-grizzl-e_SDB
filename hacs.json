@@ -1,5 +1,5 @@
 {
-  "name": "OCPP for Grizzl-E",
+  "name": "OCPP for Grizzl-E SDB",
   "content_in_root": false,
   "homeassistant": "2022.7.0",
   "render_readme": true,
