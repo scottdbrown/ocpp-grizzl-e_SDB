@@ -1,5 +1,5 @@
 {
-    "name": "stefanthoss/ocpp-grizzl-e",
+    "name": "scottdbrown/ocpp-grizzl-e_SDB",
     "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
     "onCreateCommand": "scripts/setup",
     "forwardPorts": [
