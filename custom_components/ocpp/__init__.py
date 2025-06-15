@@ -3,7 +3,9 @@
 import logging
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import Config, HomeAssistant
+#from homeassistant.core import Config, HomeAssistant
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.typing import ConfigType
 from homeassistant.helpers import device_registry
 import homeassistant.helpers.config_validation as cv
 from ocpp.v16.enums import AuthorizationStatus
@@ -49,7 +51,7 @@ CONFIG_SCHEMA = vol.Schema(
 )
 
 
-async def async_setup(hass: HomeAssistant, config: Config):
+async def async_setup(hass: HomeAssistant, config: ConfigType):
     """Read configuration from yaml."""
 
     ocpp_config = config.get(DOMAIN, {})
@@ -84,7 +86,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         identifiers={(DOMAIN, entry.data.get(CONF_CPID, DEFAULT_CPID))},
         name=entry.data.get(CONF_CPID, DEFAULT_CPID),
         model="Unknown",
-        via_device=((DOMAIN), central_sys.id),
+        #via_device=((DOMAIN), central_sys.id),
     )
 
     hass.data[DOMAIN][entry.entry_id] = central_sys
